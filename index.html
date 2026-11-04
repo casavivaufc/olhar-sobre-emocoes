@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFDF5">
+<title>Olhar sobre as Emoções</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--n:#123A7A;--b:#42A5E8;--l:#DCEFFD;--y:#F6BD35;--g:#64C8B6;--c:#FFFDF5;--t:#22314d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--c);color:var(--t);font:16px/1.55 Figtree,system-ui,sans-serif;overflow-x:hidden;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px));min-height:100%}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--n);line-height:1.2;font-weight:700}
+h1{font-size:2.1rem}h2{font-size:1.5rem;margin-bottom:8px}h3{font-size:1.1rem}
+#app{max-width:480px;margin:0 auto;padding:16px 18px 24px}
+#app.in{animation:in .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:26px;box-shadow:0 8px 24px rgba(18,58,122,.09);padding:20px;margin:14px 0}
+.sub,.hint{color:#4a5a78;margin-bottom:14px}.hint{font-size:.9rem;text-align:center;margin-top:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;border:0;border-radius:18px;font:700 1rem Figtree,sans-serif;padding:12px 18px;cursor:pointer;margin:8px 0;transition:transform .15s,box-shadow .2s;text-align:center;text-decoration:none}
+.btn:active{transform:scale(.97)}
+.btn.p{background:var(--n);color:#fff;box-shadow:0 8px 18px rgba(18,58,122,.25)}
+.btn.y{background:var(--y);color:var(--n);box-shadow:0 8px 20px rgba(246,189,53,.4);min-height:62px;font-size:1.05rem}
+.btn.s{background:var(--l);color:var(--n)}
+.btn:disabled{opacity:.4;pointer-events:none}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.top{font-size:.78rem;color:#4a5a78;line-height:1.35}.top b{color:var(--n);letter-spacing:.06em}
+.hero{position:relative;margin:10px -6px 0;text-align:center}
+.hero .blob{position:absolute;border-radius:50%;animation:fl 7s ease-in-out infinite}
+.fl{animation:fl 5s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+.enter{animation:ent .8s .1s both cubic-bezier(.2,.8,.2,1)}
+@keyframes ent{from{opacity:0;transform:scale(.8) translateY(20px)}to{opacity:1;transform:none}}
+.quote{font:600 1.35rem/1.3 Fraunces,serif;color:var(--n);margin:6px 0 10px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.trio div{background:#fff;border-radius:20px;padding:12px 6px;text-align:center;font-size:.76rem;line-height:1.3;box-shadow:0 4px 14px rgba(18,58,122,.07)}
+.trio b{display:block;color:var(--n);font-size:.82rem;margin:6px 0 2px}
+.trio i{display:block;width:30px;height:30px;border-radius:50%;margin:0 auto}
+.seg{display:flex;gap:6px;margin:6px 0 4px}.seg span{flex:1;height:7px;border-radius:5px;background:var(--l);overflow:hidden}
+.seg span i{display:block;height:100%;width:0;background:var(--b);border-radius:5px;transition:width .6s}
+.seg span.d i{width:100%}.seg span.c i{width:100%;background:var(--y)}
+.stl{font-size:.85rem;color:var(--n);font-weight:700;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid .em:last-child{grid-column:1/-1}
+.em{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:12px 10px 14px;background:#fff;border:3px solid transparent;border-radius:24px;box-shadow:0 6px 18px rgba(18,58,122,.08);font:inherit;color:inherit;cursor:pointer;transition:all .25s;gap:4px}
+.em b{color:var(--n);font-size:.98rem;line-height:1.2}.em small{font-size:.78rem;line-height:1.35;color:#4a5a78}
+.em:active{transform:scale(.97)}
+.em.on{border-color:var(--b);background:var(--l);transform:translateY(-3px)}
+.em.on2{border-color:var(--g);background:#E3F6F2;transform:translateY(-3px)}
+.em.on svg,.em.on2 svg{animation:pop .5s}
+.em.on::after,.em.on2::after{content:"principal";position:absolute;top:8px;right:8px;background:var(--b);color:#fff;font:700 .66rem Figtree;padding:2px 8px;border-radius:10px;animation:pop .4s}
+.em.on2::after{content:"também";background:#2f9e8c}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:60px;background:#fff;border:3px solid transparent;border-radius:20px;padding:10px 14px;margin:8px 0;font:500 1rem Figtree;color:var(--t);text-align:left;cursor:pointer;box-shadow:0 4px 14px rgba(18,58,122,.07);transition:all .25s}
+.opt i{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #b7c6df;transition:all .25s;display:grid;place-items:center;color:#fff;font-style:normal;font-size:.85rem}
+.opt.on{border-color:var(--b);background:var(--l)}.opt.on i{background:var(--b);border-color:var(--b)}
+.need{display:flex;gap:12px;align-items:center;padding-right:16px;text-align:left}.need svg{flex:none}
+.need div{display:flex;flex-direction:column}.need small{font-size:.85rem;line-height:1.4;color:#4a5a78;margin-top:2px}
+.foot{position:sticky;bottom:calc(80px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:16px;padding:8px 0;background:linear-gradient(transparent,var(--c) 30%)}
+.foot .btn{margin:0}
+textarea{width:100%;min-height:96px;border:2px solid var(--l);border-radius:18px;padding:12px;font:inherit;resize:vertical;background:#fff}
+.q{background:var(--l);border-radius:24px;padding:20px;font:600 1.2rem/1.4 Fraunces,serif;color:var(--n);margin:14px 0}
+.breathe{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,var(--g),#9adccf);margin:14px auto;animation:br 8s ease-in-out infinite}
+@keyframes br{0%,100%{transform:scale(.6)}50%{transform:scale(1.15)}}
+.esc{background:linear-gradient(160deg,#fff 40%,var(--l));border:2px solid var(--y);text-align:center;position:relative;overflow:hidden}
+.esc p{text-align:left;margin:10px 0}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 10px calc(8px + env(safe-area-inset-bottom,0px))}
+.nav div{display:flex;width:100%;max-width:460px;background:#fff;border-radius:26px;box-shadow:0 8px 30px rgba(18,58,122,.2);padding:6px}
+.nav button{flex:1;border:0;background:none;border-radius:20px;padding:7px 2px;font:600 .66rem Figtree;color:#5b6b88;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:54px;cursor:pointer;transition:all .25s}
+.nav button.on{background:var(--l);color:var(--n)}
+.nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.acc{width:100%;text-align:left;border:0;background:#fff;border-radius:22px;padding:16px 18px;margin:10px 0;box-shadow:0 5px 16px rgba(18,58,122,.08);font:inherit;cursor:pointer;color:var(--t)}
+.acc h3{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.acc h3::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--l);display:grid;place-items:center;transition:transform .3s}
+.acc.on h3::after{transform:rotate(45deg);background:var(--y)}
+.acc div{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s}.acc.on div{grid-template-rows:1fr}
+.acc div p{overflow:hidden;min-height:0}.acc.on div p{padding-top:10px}
+.ref a{color:#0b5aa8;word-break:break-all;font-size:.88rem;font-weight:700}
+.toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--n);color:#fff;padding:12px 18px;border-radius:16px;font-size:.9rem;opacity:0;pointer-events:none;transition:all .3s;z-index:30;width:max-content;max-width:90vw;text-align:center}
+.toast.s{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<main id="app"></main>
+<nav class="nav"><div id="nav"></div></nav>
+<div class="toast" id="toast" role="status"></div>
+<script>
+// WhatsApp do Programa Acolhe (USOST): +55 85 9106-2542. Confirmar a numeração com a USOST.
+const LINK_WHATSAPP_ACOLHE = "https://wa.me/558591062542";
+
+const K="#22314d";
+const C={
+tri:{sk:"#8d5a3b",hr:"#2b1b12",st:2,sh:"#42A5E8",br:[54,50,50,54],mo:"M46 79 Q60 71 74 79",ex:"t",bg:"#DCEFFD"},
+ans:{sk:"#f0c3a0",hr:"#6b3a1e",st:1,sh:"#F6BD35",br:[53,48,48,53],mo:"M44 77 q4 -4 8 0 t8 0 t8 0",ex:"s",bg:"#FFF1CC"},
+rai:{sk:"#c68a5e",hr:"#1a1a1a",st:0,sh:"#d9826b",br:[48,54,54,48],mo:"M46 79 Q60 74 74 79",ex:"f",bg:"#FDE6DF"},
+med:{sk:"#f5d2b5",hr:"#b5b5b5",st:4,sh:"#64C8B6",br:[54,48,48,54],mo:"M54 76 Q60 85 66 76 Q60 72 54 76Z",ex:"",bg:"#D9F3EE"},
+fru:{sk:"#a9724c",hr:"#3b2417",st:3,sh:"#123A7A",br:[49,53,53,49],mo:"M46 80 Q53 74 60 78 Q67 82 74 76",ex:"",bg:"#E6E9F5"},
+ale:{sk:"#e2a77e",hr:"#2a1a10",st:2,sh:"#F6BD35",br:[50,50,50,50],mo:"M44 73 Q60 90 76 73",ex:"k",bg:"#FFF1CC"},
+cal:{sk:"#7a4a30",hr:"#1a1a1a",st:1,sh:"#64C8B6",br:[52,51,51,52],mo:"M48 75 Q60 83 72 75",ex:"c",bg:"#D9F3EE"},
+can:{sk:"#f0c3a0",hr:"#4a4a4a",st:0,sh:"#8aa0c8",br:[55,52,52,55],mo:"M48 79 H72",ex:"z",bg:"#E8EEF8"},
+nao:{sk:"#d8a07a",hr:"#5a2e1c",st:3,sh:"#42A5E8",br:[50,49,52,54],mo:"M48 78 Q54 75 60 78 Q66 81 72 77",ex:"q",bg:"#DCEFFD"},
+wel:{sk:"#c68a5e",hr:"#2b1b12",st:2,sh:"#123A7A",br:[51,50,50,51],mo:"M44 73 Q60 88 76 73",ex:"p",bg:"#DCEFFD"},
+ref:{sk:"#e2a77e",hr:"#2a1a10",st:1,sh:"#64C8B6",br:[51,49,50,52],mo:"M48 78 Q60 80 72 77",ex:"b",bg:"#E3F6F2"},
+pau:{sk:"#7a4a30",hr:"#1a1a1a",st:1,sh:"#64C8B6",br:[52,51,51,52],mo:"M48 75 Q60 83 72 75",ex:"c",bg:"#D9F3EE"},
+con:{sk:"#e2a77e",hr:"#2a1a10",st:1,sh:"#42A5E8",br:[51,50,50,51],mo:"M46 75 Q60 84 74 75",ex:"",bg:"#DCEFFD"},
+apo:{sk:"#f5d2b5",hr:"#6b3a1e",st:3,sh:"#F6BD35",br:[52,50,50,52],mo:"M46 76 Q60 82 74 76",ex:"",bg:"#FFF1CC"}};
+const hp=(s,h)=>{const t=`<path d="M35 56 Q34 28 60 28 Q86 28 85 56 Q78 42 60 42 Q42 42 35 56Z" fill="${h}"/>`;
+ if(s==2)return[42,60,78,36,84].map((x,i)=>`<circle cx="${x}" cy="${[40,34,40,52,52][i]}" r="${[12,14,12,8,8][i]}" fill="${h}"/>`).join("");
+ if(s==3)return t+`<circle cx="60" cy="24" r="9" fill="${h}"/>`;
+ if(s==4)return`<path d="M36 52 Q38 32 60 32 Q82 32 84 52 Q74 40 60 40 Q46 40 36 52Z" fill="${h}"/>`;return t};
+const EX={t:'<path d="M44 66 q-3 6 0 8 q3 -2 0 -8z" fill="#42A5E8"/>',s:'<path d="M88 40 q-4 7 0 9 q4 -2 0 -9z" fill="#42A5E8"/>',
+f:'<path d="M28 40 l7 4 M92 40 l-7 4" stroke="#d9826b" stroke-width="3" stroke-linecap="round"/>',
+z:'<text x="86" y="34" font-size="15" font-weight="700" fill="#123A7A" font-family="Fraunces,serif">z</text><text x="95" y="22" font-size="10" font-weight="700" fill="#123A7A" font-family="Fraunces,serif">z</text>',
+p:'<path d="M18 30 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z M98 22 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#F6BD35"/>',
+q:'<text x="86" y="38" font-size="20" font-weight="700" fill="#42A5E8" font-family="Fraunces,serif">?</text>',
+b:'<g fill="#fff" stroke="#DCEFFD"><circle cx="90" cy="40" r="3"/><circle cx="97" cy="31" r="4.5"/><circle cx="105" cy="17" r="8"/></g>',
+k:'<circle cx="43" cy="70" r="5" fill="#f4a5a0" opacity=".5"/><circle cx="77" cy="70" r="5" fill="#f4a5a0" opacity=".5"/><path d="M18 30 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#F6BD35"/>'};
+const g=o=>{const[a,b,c,d]=o.br,cl=/[cz]/.test(o.ex);
+ return`<ellipse cx="60" cy="64" rx="54" ry="50" fill="${o.bg}"/>`+(o.st==1?`<path d="M34 60 Q30 100 38 104 L82 104 Q90 100 86 60Z" fill="${o.hr}"/>`:"")+
+ `<path d="M16 124 Q18 92 60 92 Q102 92 104 124Z" fill="${o.sh}"/><rect x="52" y="80" width="16" height="16" fill="${o.sk}"/><ellipse cx="60" cy="58" rx="24" ry="27" fill="${o.sk}"/>${hp(o.st,o.hr)}`+
+ (cl?`<path d="M45 60 q5 4 10 0 M65 60 q5 4 10 0" stroke="${K}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`:`<circle cx="50" cy="60" r="2.8" fill="${K}"/><circle cx="70" cy="60" r="2.8" fill="${K}"/>`)+
+ `<path d="M43 ${a}L56 ${b}M64 ${c}L77 ${d}" stroke="${o.hr==="#b5b5b5"?"#8a8a8a":o.hr}" stroke-width="2.6" stroke-linecap="round"/><path d="${o.mo}" stroke="${K}" stroke-width="2.6" fill="${o.mo.endsWith("Z")?K:"none"}" stroke-linecap="round" stroke-linejoin="round"/>`+
+ [...o.ex].map(x=>EX[x]||"").join("")};
+const av=(o,s=88,cls="")=>`<svg class="${cls}" width="${s}" height="${s}" viewBox="0 0 120 120" aria-hidden="true">${g(o)}</svg>`;
+const scene=()=>`<svg viewBox="0 0 260 130" width="100%" style="max-width:300px" aria-hidden="true"><rect x="8" y="96" width="244" height="28" rx="14" fill="#F6BD35" opacity=".5"/><g transform="translate(-4 0)">${g(C.con)}</g><g transform="translate(144 0) scale(.95)">${g(C.apo)}</g><g class="fl"><rect x="104" y="14" width="52" height="30" rx="14" fill="#fff" stroke="#64C8B6" stroke-width="2"/><circle cx="118" cy="29" r="3" fill="#64C8B6"/><circle cx="130" cy="29" r="3" fill="#42A5E8"/><circle cx="142" cy="29" r="3" fill="#F6BD35"/></g></svg>`;
+
+const E=[
+["tri","Tristeza","Quando algo pesa, entristece ou traz uma sensação de perda.","tristeza","O que pode estar precisando de atenção ou acolhimento neste momento?","Você reconheceu a tristeza, e isso abre espaço para olhar com mais cuidado para o que está vivendo. Você não precisa entender tudo imediatamente."],
+["ans","Ansiedade","Quando há preocupação, antecipação ou dificuldade de desacelerar.","ansiedade","Existe algo que você sente que precisa antecipar, controlar ou resolver agora?","Você identificou a ansiedade. Reconhecê-la ajuda a compreender o que está acontecendo, e desacelerar aos poucos é possível."],
+["rai","Raiva ou irritação","Quando algo incomoda, parece injusto ou ultrapassa seus limites.","raiva ou irritação","Algum limite, necessidade ou situação parece estar sendo desconsiderado?","Você reconheceu raiva ou irritação. Essa emoção costuma sinalizar que algum limite ou necessidade pede atenção."],
+["med","Medo","Quando algo parece ameaçador ou gera insegurança.","medo","O que está gerando insegurança? Que apoio ou informação poderia ajudar?","Você reconheceu o medo. Ele costuma indicar que algo pede segurança, informação ou apoio."],
+["fru","Frustração","Quando as coisas não acontecem como você esperava ou precisava.","frustração","Existe alguma expectativa, necessidade ou dificuldade que merece ser reconhecida?","Você identificou frustração. Ela aparece quando expectativas ou necessidades não foram atendidas, e merece ser reconhecida, não julgada."],
+["ale","Alegria ou satisfação","Quando algo traz prazer, contentamento ou realização.","alegria ou satisfação","O que contribuiu para esse sentimento e como você pode valorizar esse momento?","Você reconheceu algo que está trazendo alegria ou satisfação. Perceber essas experiências ajuda a compreender o que tem significado para você e o que merece ser valorizado no cotidiano."],
+["cal","Calma","Quando você percebe mais tranquilidade neste momento.","calma","O que tem contribuído para essa sensação de tranquilidade?","Você percebeu mais tranquilidade neste momento. Notar o que contribui para isso ajuda a repetir esses cuidados."],
+["can","Cansaço ou sobrecarga","Quando as demandas parecem ultrapassar a energia ou os recursos disponíveis.","cansaço ou sobrecarga","Quais demandas estão pesando mais? Há algo que precise ser compartilhado, reorganizado ou apoiado?","Você percebeu sinais de cansaço ou sobrecarga. Isso merece atenção, não julgamento. Nem toda sobrecarga pode ser resolvida individualmente."],
+["nao","Não consigo identificar","Às vezes percebemos que algo está acontecendo, mas ainda não encontramos palavras para isso.","dificuldade para nomear o que sente","O que você percebe no corpo, nos pensamentos ou na vontade de agir, mesmo sem conseguir nomear a emoção?","Nem sempre conseguimos nomear o que sentimos de imediato. Você não precisa se cobrar por isso. Observar aos poucos, no seu tempo, também é uma forma de cuidado."]];
+const X=[["trab","Trabalho e demandas profissionais","Você percebeu que isso pode estar ligado ao trabalho. Além de estratégias individuais, algumas situações também precisam de diálogo, apoio e mudanças nas condições de trabalho."],
+["rel","Relações interpessoais","Relações com outras pessoas parecem ter um papel nisso. Conversar com quem você confia pode ajudar a clarear o que está acontecendo."],
+["pes","Vida pessoal ou familiar","A vida pessoal ou familiar também aparece nesse cenário, e é natural que ela atravesse o dia de trabalho."],
+["sau","Saúde, sono e cansaço físico","Sono, saúde e energia física também influenciam o que sentimos. Cuidar do corpo faz parte de cuidar das emoções."],
+["mud","Mudanças ou incertezas","Mudanças e incertezas costumam intensificar emoções. Buscar informação e apoio pode ajudar a recuperar alguma sensação de chão."],
+["mais","Mais de um fator","Você percebeu que mais de um fator pode estar envolvido, e isso é comum: emoções raramente têm uma causa só."],
+["nsei","Ainda não sei","Você ainda não sabe ao certo o que está relacionado, e tudo bem. Perceber isso aos poucos já é um começo."],
+["nr","Prefiro não responder","Você preferiu não detalhar o contexto, e esse limite merece respeito."]];
+const N=[["pau","Fazer uma pausa","Talvez você precise de alguns minutos para respirar ou descansar, quando isso for possível.","Se for possível, reserve alguns minutos para respirar ou descansar."],
+["con","Conversar com alguém","Talvez compartilhar o que está acontecendo com alguém de confiança possa ajudar.","Compartilhar com alguém de confiança pode ajudar a organizar o que você sente."],
+["ref","Entender melhor o que sente","Talvez você precise de tempo para reconhecer a emoção e compreender o que ela sinaliza.","Dar tempo para reconhecer a emoção e entender o que ela sinaliza também é cuidado."],
+["apo","Buscar apoio","Talvez seja importante encontrar um espaço de escuta ou conversar com alguém que possa oferecer suporte.","Procurar um espaço de escuta pode ser um bom próximo passo."]];
+const L=[["O que são emoções?","Emoções são experiências complexas que envolvem como nos sentimos por dentro, o que o corpo faz (coração acelerado, tensão, cansaço), como interpretamos a situação e o que sentimos vontade de fazer. Elas fazem parte de ser humano."],
+["Existe emoção boa ou ruim?","Emoções não precisam ser julgadas como boas ou ruins. Algumas são desconfortáveis, mas todas podem trazer informações importantes sobre o que acontece com a gente e com o que nos cerca."],
+["O que é regulação emocional?","É o conjunto de modos pelos quais lidamos com o que sentimos. Regular emoções não significa reprimi-las, negá-las ou eliminá-las, e sim reconhecê-las e escolher como responder a elas."],
+["Por que é difícil identificar o que sinto?","As experiências emocionais podem ser complexas, vir várias ao mesmo tempo e ser difíceis de nomear. Isso é comum, e perceber o corpo, os pensamentos e as vontades ajuda aos poucos."],
+["Emoções e trabalho","O que sentimos no trabalho é influenciado por relações interpessoais, demandas profissionais, autonomia, apoio social, descanso e condições de trabalho. Por isso, nem tudo se resolve apenas de forma individual."],
+["Quando procurar apoio?","Buscar apoio pode ser importante quando o sofrimento é intenso, persistente, recorrente ou interfere na vida cotidiana. Não é preciso esperar chegar ao limite para procurar um espaço de escuta."]];
+const R=[["Gross, J. J. (1998).","The emerging field of emotion regulation: An integrative review. Review of General Psychology, 2(3), 271–299.","https://doi.org/10.1037/1089-2680.2.3.271"],
+["Jackson-Koku, G., & Grime, P. (2019).","Emotion regulation and burnout in doctors: a systematic review. Occupational Medicine, 69(1), 9–21.","https://pubmed.ncbi.nlm.nih.gov/30753715/"],
+["Silva, M. G., & Tolfo, S. R. (2026).","Fatores de risco psicossociais, impactos na saúde mental e mapeamento de práticas interventivas no trabalho de profissionais assistenciais em unidades hospitalares: revisão de escopo. Revista Brasileira de Saúde Ocupacional, 51, e17.","https://www.scielo.br/j/rbso/a/vtDqZtSx9VWxW3SNN95yRGM/?format=html&ilang=pt_BR"],
+["Ministério da Saúde.","Transtorno Mental Relacionado ao Trabalho.","https://www.gov.br/saude/pt-br/composicao/svsa/saude-do-trabalhador/vigilancia-em-saude-do-trabalhador-vigisat/doencas-e-agravos-relacionados-ao-trabalho/transtorno-mental-relacionado-ao-trabalho"]];
+const ST=["Reconhecer","Contextualizar","Identificar necessidades","Refletir","Devolutiva"];
+
+// Estado apenas em memória: nada é salvo nem enviado.
+let S={view:"home",step:0,em:[],cx:[],nd:null,open:-1};
+const $=s=>document.querySelector(s),app=$("#app");
+const head=i=>`<p class="top"><b>CASA VIVA UFC</b></p><div class="seg" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="${i+1}">${ST.map((_,k)=>`<span class="${k<i?"c":k==i?"d":""}"><i></i></span>`).join("")}</div><p class="stl">Etapa ${i+1} de 5 · ${ST[i]}</p>`;
+const foot=(ok,last)=>`<div class="foot"><button class="btn s" data-a="back">Voltar</button>${last?"":`<button class="btn p" data-a="next" ${ok?"":"disabled"}>Continuar</button>`}</div>`;
+const em1=()=>E.find(e=>e[0]==S.em[0]),em2=()=>E.find(e=>e[0]==S.em[1]);
+const msg=()=>{const e=em1(),e2=em2(),cx=S.cx.slice(0,2).map(c=>X.find(x=>x[0]==c)[2]),nd=N.find(n=>n[0]==S.nd);
+ return[e[5],e2?`Também apareceu ${e2[3]}, e sentir mais de uma coisa ao mesmo tempo é comum.`:"",...cx,nd?nd[3]:""].filter(Boolean).join(" ")};
+const V={
+home:()=>`<p class="top"><b>CASA VIVA UFC</b><br>Ação do Programa Qualidade de Vida no Trabalho / USOST / DivGP.</p>
+<div class="hero"><div class="blob" style="width:70px;height:70px;background:var(--y);opacity:.55;left:4%;top:20px"></div><div class="blob" style="width:44px;height:44px;background:var(--g);opacity:.6;right:6%;top:6px;animation-delay:-3s"></div><div class="blob" style="width:30px;height:30px;background:var(--b);opacity:.5;right:12%;top:150px;animation-delay:-5s"></div>
+<div class="enter fl" style="position:relative">${av(C.wel,230)}</div></div>
+<h1>Olhar sobre as Emoções</h1><p class="quote">“Que espaço seus sentimentos estão ocupando hoje?”</p>
+<p class="sub">Na rotina, nem sempre conseguimos parar para perceber o que sentimos. Este é um convite para olhar para si com mais atenção, compreender o que pode estar acontecendo e descobrir possibilidades de cuidado.</p>
+<div class="trio"><div><i style="background:var(--l)"></i><b>RECONHECER</b>perceber o que estou sentindo</div><div><i style="background:#fbe3a6"></i><b>COMPREENDER</b>explorar o que pode estar relacionado</div><div><i style="background:#bfeae2"></i><b>CUIDAR</b>identificar cuidado e apoio</div></div>
+<button class="btn y" data-a="start">Começar minha experiência</button>
+<p class="hint">Esta experiência é educativa e reflexiva. Não substitui acompanhamento profissional.</p>`,
+exp:()=>{const s=S.step;
+ if(s==0)return head(0)+`<h2>Como você está se sentindo neste momento?</h2><p class="sub">Não existe resposta certa ou errada. Escolha a emoção que mais se aproxima do que você está sentindo agora. Se for difícil identificar, tudo bem.</p><div class="grid">${E.map(e=>`<button class="em ${S.em[0]==e[0]?"on":S.em[1]==e[0]?"on2":""}" data-a="em" data-i="${e[0]}" aria-pressed="${S.em.includes(e[0])}">${av(C[e[0]],84)}<b>${e[1]}</b><small>${e[2]}</small></button>`).join("")}</div><p class="hint">Se quiser, toque em uma segunda emoção para marcá-la como secundária (opcional).</p>`+foot(S.em.length)
+ if(s==1)return head(1)+`<h2>O que pode estar relacionado ao que você sente?</h2><p class="sub">Às vezes, uma emoção está ligada a uma situação específica. Em outras, pode envolver várias coisas ao mesmo tempo. Você pode escolher mais de uma opção e não precisa contar detalhes.</p>${X.map(x=>`<button class="opt ${S.cx.includes(x[0])?"on":""}" data-a="cx" data-i="${x[0]}" aria-pressed="${S.cx.includes(x[0])}"><i>${S.cx.includes(x[0])?"✓":""}</i>${x[1]}</button>`).join("")}`+foot(S.cx.length)
+ if(s==2)return head(2)+`<h2>Do que você precisa neste momento?</h2><p class="sub">Escolha a opção que mais faz sentido agora.</p>${N.map(n=>`<button class="em need ${S.nd==n[0]?"on":""}" style="width:100%;margin:8px 0;flex-direction:row" data-a="nd" data-i="${n[0]}">${av(C[n[0]],78)}<div><b>${n[1]}</b><small>${n[2]}</small></div></button>`).join("")}`+foot(S.nd)
+ if(s==3)return head(3)+`<div style="text-align:center" class="fl">${av(C.ref,150)}</div><h2>Vamos olhar para isso com um pouco mais de atenção?</h2><div class="q">${em1()[4]}</div><p class="sub">Se quiser, escreva abaixo. É opcional: o texto serve só para a sua reflexão agora, não é guardado nem enviado.</p><textarea aria-label="Reflexão opcional (não é guardada)"></textarea>`+foot(true)
+ return head(4)+`<h2>Um passo de cada vez.</h2><div class="card"><p>${msg()}</p>${S.nd=="pau"?`<div class="breathe" aria-hidden="true"></div><p class="hint">Acompanhe o círculo: inspire enquanto ele cresce, expire enquanto ele diminui.</p>`:""}</div>
+<div class="card esc"><div class="enter">${scene()}</div><h2>Você não precisa lidar com tudo sozinho.</h2><h3>Programa Acolhe — USOST</h3>
+<p>Reconhecer o que você sente é um passo importante. E, se precisar conversar, organizar seus pensamentos ou compartilhar algo que esteja vivendo, você pode buscar um espaço de escuta e acolhimento.</p><p>O Programa Acolhe, ligado à USOST, oferece acolhimento psicológico e escuta qualificada a trabalhadores da saúde. Se sentir que esse espaço pode ser importante para você, entre em contato pelo WhatsApp do programa.</p>
+<button class="btn y" data-a="book">FALAR COM O ACOLHE NO WHATSAPP</button><p class="hint" style="margin:0 0 6px">Buscar apoio também é uma forma de cuidado.</p><button class="btn s" data-a="go" data-v="usost">Conhecer o programa</button></div>
+<button class="btn p" data-a="again">Explorar outra emoção</button><button class="btn s" data-a="home">Voltar ao início</button>`+foot(true,true).replace(/.*/s,"")},
+learn:()=>`<p class="top"><b>CASA VIVA UFC</b></p><h2>Entenda suas emoções</h2><p class="sub">Toque em um cartão para ler mais.</p>${L.map((l,i)=>`<button class="acc ${S.open==i?"on":""}" data-a="acc" data-i="${i}" aria-expanded="${S.open==i}"><h3>${l[0]}</h3><div><p>${l[1]}</p></div></button>`).join("")}`,
+sci:()=>`<p class="top"><b>CASA VIVA UFC</b></p><h2>Ciência por trás do cuidado</h2><p class="sub">Referências que inspiram este aplicativo.</p>${R.map(r=>`<div class="card ref"><p><b>${r[0]}</b> ${r[1]}</p><p style="margin-top:8px"><a href="${r[2]}" target="_blank" rel="noopener noreferrer">${r[2]}</a></p></div>`).join("")}`,
+usost:()=>`<p class="top"><b>CASA VIVA UFC</b></p><div class="card esc"><div class="enter">${scene()}</div><h2>Programa Acolhe — USOST</h2><p>O Programa Acolhe, ligado à Unidade de Saúde Ocupacional e Segurança do Trabalho (USOST), é uma iniciativa de acolhimento psicológico, escuta qualificada e suporte em saúde mental para trabalhadores da saúde. A busca é voluntária e você decide se e quando fazer isso.</p><p>O contato é feito pelo WhatsApp do programa: <b>+55 85 9106-2542</b>.</p><p class="hint" style="text-align:left">Em situação de emergência, procure o serviço de urgência mais próximo.</p><button class="btn y" data-a="book">FALAR COM O ACOLHE NO WHATSAPP</button><p class="hint" style="margin:0">Buscar apoio também é uma forma de cuidado.</p></div><button class="btn s" data-a="home">Voltar ao início</button>`};
+const NV=[["home","Início","M3 11l9-8 9 8v10H3z"],["exp","Experiência","M12 21s-8-5-8-11a4.5 4.5 0 018-3 4.5 4.5 0 018 3c0 6-8 11-8 11z"],["learn","Entenda","M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7"],["sci","Ciência","M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3"],["usost","Acolhe","M4 5h16v11H9l-5 4z"]];
+function render(anim=true){const y=scrollY;app.className="";app.innerHTML=V[S.view]();if(anim){void app.offsetWidth;app.className="in";scrollTo(0,0)}else scrollTo(0,y);
+ $("#nav").innerHTML=NV.map(n=>`<button class="${S.view==n[0]?"on":""}" data-a="go" data-v="${n[0]}" ${S.view==n[0]?'aria-current="page"':""}><svg viewBox="0 0 24 24"><path d="${n[2]}"/></svg>${n[1]}</button>`).join("")}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("s");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("s"),3200)}
+document.addEventListener("click",ev=>{const t=ev.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,i=t.dataset.i;let anim=true;
+ if(a=="go")S.view=t.dataset.v;
+ else if(a=="start"){S.view="exp";S.step=0}
+ else if(a=="next"){S.step=Math.min(4,S.step+1)}
+ else if(a=="back"){if(S.step==0)S.view="home";else S.step--}
+ else if(a=="em"){anim=false;const k=S.em.indexOf(i);if(k>=0)S.em.splice(k,1);else if(S.em.length<2)S.em.push(i);else S.em[1]=i}
+ else if(a=="cx"){anim=false;const k=S.cx.indexOf(i),ex=["nsei","nr"];if(k>=0)S.cx.splice(k,1);else if(ex.includes(i))S.cx=[i];else S.cx=S.cx.filter(c=>!ex.includes(c)).concat(i)}
+ else if(a=="nd"){anim=false;S.nd=i}
+ else if(a=="acc"){anim=false;S.open=S.open==+i?-1:+i}
+ else if(a=="again"){S={...S,view:"exp",step:0,em:[],cx:[],nd:null}}
+ else if(a=="home"){S={...S,view:"home",step:0,em:[],cx:[],nd:null}}
+ else if(a=="book"){toast("Abrindo o WhatsApp. Se não abrir, use o número +55 85 9106-2542.");window.open(LINK_WHATSAPP_ACOLHE,"_blank","noopener");return}
+ render(anim)});
+render();
+</script></body></html>
